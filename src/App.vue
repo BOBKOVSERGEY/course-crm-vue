@@ -3,5 +3,5 @@
 </script>
 
 <template>
-  hello, world
+  <button class="button">hello, world, кнопка</button>
 </template>
