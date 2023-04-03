@@ -5,3 +5,5 @@
 # Copy 
 cp -r common.blocks ../../src/assets
 
+# draft 
+http://open-crm-demo.artprog.pro/draft.html
