@@ -88,10 +88,11 @@
           <div class="main-menu__link-title">Настройки (Свернут: {{ collapsed ? 'Yes': 'No' }} Tag: {{tag}})
           </div>
           <div class="main-menu__control" @click.prevent="toggleCollapsed">
-            <svg class="icon icon_type_plus">
+
+            <svg class="icon icon_type_plus" v-if="collapsed">
               <use xlink:href="@/assets/i/sprite/sprite.svg#plus"></use>
             </svg>
-            <svg class="icon icon_type_minus">
+            <svg class="icon icon_type_minus" v-else>
               <use xlink:href="@/assets/i/sprite/sprite.svg#minus"></use>
             </svg>
           </div></a>
@@ -142,9 +143,8 @@
 <script setup>
 import { ref } from "vue";
 
-const
-    collapsed = ref(false),
-    tag = ref('');
+const collapsed = ref(false);
+const tag = ref('');
 const toggleCollapsed = (event) => {
   collapsed.value = !collapsed.value
   tag.value = event.target.tagName
