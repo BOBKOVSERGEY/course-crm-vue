@@ -1,4 +1,8 @@
 <template>
+  <div class="my-component">
+    App
+  </div>
+  <MyComponent />
   <div class="utility-container">
     <div class="utility-container__header">
       <div class="utility-container__title">.notification
@@ -92,9 +96,10 @@
     </div>
   </div>
 </template>
-
+<script setup>
+import MyComponent from "@/07-hw-styles/MyComponent.vue";
+</script>
 <style lang="scss">
-
 @use "sass:math";
 @import '@/assets/sass/variables';
 @import '../assets/sass/extends/_*.scss';
@@ -103,5 +108,10 @@
 @import '../assets/common.blocks/notification/**/*.scss';
 @import '../assets/common.blocks/button/**/*.scss';
 @import '../assets/common.blocks/utility-container/**/*.scss';
+
+.my-component {
+  color: orange;
+  font-size: 22px;
+}
 
 </style>

@@ -1,0 +1,50 @@
+[
+  {
+    "title": "One Lorem Ipsum",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "/link-1",
+    "type" : ""
+  },
+  {
+    "title": "Two Lorem Ipsum on yksinkertaisesti testausteksti",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "/link-2",
+    "type" : "success"
+  },
+  {
+    "title": "Three Lorem Ipsum on yksinkertaisesti testausteksti",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "",
+    "type" : "warning"
+  },
+  {
+    "title": "Four Lorem Ipsum on yksinkertaisesti testausteksti",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "/link-4",
+    "type" : "error"
+  },
+  {
+    "title": "Five Lorem Ipsum",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "/link-5",
+    "type" : ""
+  },
+  {
+    "title": "Six Lorem Ipsum on yksinkertaisesti testausteksti",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "/link-6",
+    "type" : "success"
+  },
+  {
+    "title": "Seven Lorem Ipsum on yksinkertaisesti testausteksti",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "",
+    "type" : "warning"
+  },
+  {
+    "title": "Eight Lorem Ipsum on yksinkertaisesti testausteksti",
+    "message": "Letraset-paperiarkit, joissa oli Lorem Ipsum pätkiä, julkaistiin ja vielä myöhemmin tietokoneen julkistusohjelmissa, kuten Aldus PageMaker joissa oli versioita Lorem Ipsumista.",
+    "link" : "/link-8",
+    "type" : "error"
+  }
+]
