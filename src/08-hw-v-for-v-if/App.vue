@@ -1,4 +1,5 @@
 <template>
+  <div class="class1" v-for="a in b"><div class="class2"></div></div>
   <div class="page-notifications" v-if="notifications.length">
     <div class="notification"
          v-for="notification in notifications"
@@ -36,6 +37,6 @@
 <script setup>
 import notifications from './data/notifications.json';
 import { ref } from "vue";
-
+let b = [];
 </script>
 
