@@ -6,14 +6,9 @@
       </th>
       <th class="table__head-cell">#
       </th>
-      <th class="table__head-cell">
-        Имя
+      <th class="table__head-cell">Имя
       </th>
-      <th class="table__head-cell">
-        Фамилия
-      </th>
-      <th class="table__head-cell">
-        Отчество
+      <th class="table__head-cell">Фамилия
       </th>
       <th class="table__head-cell table__head-cell_actions"><a class="button button_no-text button_size_xs button_transparent" href="#">
         <svg class="icon icon_type_cog">
@@ -26,9 +21,10 @@
     </tr>
     </thead>
     <tbody class="table__body">
-    <tr class="table__body-row"
+    <tr
         v-for="item in items"
         :key="item.firstname"
+        :class="getRowClass(item)"
     >
       <td class="table__body-cell table__body-cell_width_min">
         <label class="checkbox">
@@ -53,34 +49,36 @@
       <td class="table__body-cell">
         {{ item.lastname }}
       </td>
-      <td class="table__body-cell">
-        {{ item.surname }}
-      </td>
 
       <td class="table__body-cell table__body-cell_actions">
         <a
             v-if="item.canEdit"
-            class="button button_no-text button_rounded button_size_xs button_transparent" href="#">
+            :class="getButtonClass(item)"
+            class="button button_no-text button_rounded button_size_xs" href="#">
           <svg class="icon icon_type_pencil">
             <use xlink:href="@/assets/i/sprite/sprite.svg#pencil"></use>
           </svg>
         </a>
         <a
             v-if="item.canRemove"
-            class="button button_no-text button_rounded button_size_xs button_transparent" href="#">
+            :class="getButtonClass(item)"
+            class="button button_no-text button_rounded button_size_xs" href="#">
           <svg class="icon icon_type_trash">
             <use xlink:href="@/assets/i/sprite/sprite.svg#trash"></use>
           </svg>
         </a>
         <a
             v-if="item.canCheck"
-            class="button button_no-text button_rounded button_size_xs button_transparent" href="#">
+            :class="getButtonClass(item)"
+            class="button button_no-text button_rounded button_size_xs" href="#">
           <svg class="icon icon_type_check-circle">
             <use xlink:href="@/assets/i/sprite/sprite.svg#check-circle"></use>
           </svg>
         </a>
         <a
-            class="button button_no-text button_rounded button_size_xs button_transparent" href="#">
+            class="button button_no-text button_rounded button_size_xs" href="#"
+            :class="getButtonClass(item)"
+        >
           <svg class="icon icon_type_x">
             <use xlink:href="@/assets/i/sprite/sprite.svg#x"></use>
           </svg>
@@ -91,63 +89,23 @@
     </tbody>
   </table>
   <div class="form">
-    <div
-        :class="[errors.firstname.length ? 'textbox_error' : '']"
-        class="textbox ">
+    <div class="textbox ">
       <label class="textbox__wrapper">
         <div class="textbox__label">Имя
         </div>
         <input
-            v-model.trim="model.firstname"
+            v-model="model.firstname"
             class="textbox__input"
             type="text" placeholder="Имя">
       </label>
-      <div class="textbox__message"
-           v-if="errors.firstname.length"
-      >
-        {{ errors.firstname}}
-      </div>
     </div>
-    <div
-        :class="[errors.lastname.length ? 'textbox_error' : '']"
-        class="textbox ">
+    <div class="textbox ">
       <label class="textbox__wrapper">
         <div class="textbox__label">Фамилия
         </div>
         <input class="textbox__input"
-               v-model.trim="model.lastname" type="text" placeholder="Фамилия">
+               v-model="model.lastname" type="text" placeholder="Фамилия">
       </label>
-      <div class="textbox__message"
-           v-if="errors.lastname.length"
-      >
-        {{ errors.lastname}}
-      </div>
-    </div>
-    <div
-        :class="[errors.surname.length ? 'textbox_error' : '']"
-        class="textbox ">
-      <label class="textbox__wrapper">
-        <div class="textbox__label"> Отчество
-        </div>
-        <input class="textbox__input"
-               v-model.trim="model.surname" type="text" placeholder="Отчество">
-      </label>
-      <div class="textbox__message"
-           v-if="errors.surname.length"
-      >
-        {{ errors.surname}}
-      </div>
-    </div>
-    <div
-        class="textbox ">
-      <label class="textbox__wrapper">
-        <div class="textbox__label"> Tes field
-        </div>
-        <input class="textbox__input"
-               v-model.number="myNumber" type="password" placeholder="Tes field">
-      </label>
-      {{typeof(myNumber) }}
-      <input type="checkbox" v-model="myval" value="5"/>
     </div>
     <div class="form__checkbox">
       <label class="checkbox">
@@ -187,132 +145,110 @@
   </div>
   <pre>
       {{model}}
-    {{errors}}
-    {{myNumber}}
-    {{myval}}
   </pre>
 </template>
 <script setup>
 import { ref, reactive } from "vue";
 import avatarUrl from '@/assets/i/avatar-example.jpg';
 
-const myNumber = ref();
-const myval = ref([5]);
+  const items = reactive([
+    {
+      avatar: avatarUrl,
+      firstname: 'Ivan',
+      lastname: 'Ivanov',
+      canEdit: true,
+      canRemove: true,
+      canCheck: true
+    },
+    {
+      avatar: avatarUrl,
+      firstname: 'Petr',
+      lastname: 'Valuev',
+      canEdit: true,
+      canRemove: true,
+      canCheck: true
+    },
+    {
+      avatar: avatarUrl,
+      firstname: 'Gena',
+      lastname: 'Turbo',
+      canEdit: false,
+      canRemove: true,
+      canCheck: true,
+    },
+    {
+      avatar: avatarUrl,
+      firstname: 'Ilia',
+      lastname: 'Tolokonkov',
+      canEdit: true,
+      canRemove: true,
+      canCheck: false
+    },
+  ]);
 
-const items = reactive([
-  {
-    avatar: avatarUrl,
-    firstname: 'Ivan',
-    lastname: 'Ivanov',
-    surname: 'Ivanovich',
-    canEdit: true,
-    canRemove: true,
-    canCheck: true
-  },
-  {
-    avatar: avatarUrl,
-    firstname: 'Petr',
-    lastname: 'Valuev',
-    surname: 'Petrovich',
-    canEdit: true,
-    canRemove: true,
-    canCheck: true
-  },
-  {
-    avatar: avatarUrl,
-    firstname: 'Gena',
-    lastname: 'Turbo',
-    surname: 'Turbovich',
+  const model = ref({
+    firstname: '',
+    lastname: '',
     canEdit: false,
-    canRemove: true,
-    canCheck: true,
-  },
-  {
-    avatar: avatarUrl,
-    firstname: 'Ilia',
-    lastname: 'Tolokonkov',
-    surname: 'Ilich',
-    canEdit: true,
-    canRemove: true,
-    canCheck: false
-  },
-]);
+    canRemove: false,
+    canCheck: false,
+  });
 
-const model = ref({
-  firstname: '',
-  lastname: '',
-  surname: '',
-  canEdit: false,
-  canRemove: false,
-  canCheck: false,
-});
-
-const errors = ref({
-  firstname: '',
-  lastname: '',
-  surname: '',
-})
-
-const addRecord = (model) => {
-  resetErrors(errors)
-  console.log()
-  if(validation(model)) {
+  const addRecord = (model) => {
     let newRecord = {
       avatar: avatarUrl,
       firstname: model.firstname,
       lastname: model.lastname,
-      surname: model.surname,
       canEdit: model.canEdit,
       canRemove: model.canRemove,
       canCheck: model.canCheck
     }
     items.unshift(newRecord)
-    resetForm(model)
+    //reset(model)
   }
-}
-
-const resetErrors = (errors) => {
-  errors.value.firstname = '';
-  errors.value.lastname = '';
-  errors.value.surname = '';
-}
-const resetForm = (model) => {
-  model.firstname = '';
-  model.lastname = '';
-  model.surname = '';
-  model.canEdit = false;
-  model.canRemove = false;
-  model.canCheck = false;
-}
-
-const validation = (model) => {
-  if(model.firstname.length < 4)
-    errors.value.firstname = `Поле Имя должно содержать минимум 4 символа!`;
-  if(model.lastname.length < 4)
-    errors.value.lastname = `Поле Фамилия должно содержать минимум 4 символа!`;
-  if(model.surname.length < 4)
-    errors.value.surname = `Поле Отчество должно содержать минимум 4 символа!`;
-  return !(errors.value.firstname.length || errors.value.lastname || errors.value.surname);
-}
-</script>
-<style lang="scss" scoped>
-@import "@/assets/sass/_variables.scss";
-.form {
-  padding: $gap_m;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  //flex-direction: column;
-  & > * {
-    margin-right: $gap_m;
+  const reset = (model) => {
+        model.firstname = '';
+        model.lastname = '';
+        model.canEdit = false;
+        model.canRemove = false;
+        model.canCheck = false;
   }
-  &__checkbox {
-    display: flex;
-    flex-direction: column;
-    & > label {
-      margin-bottom: 10px;
+
+  const getRowClass = (item) => {
+    return [
+        'table__body-row', {
+        'table__body-row_color_success': item.canEdit,
+        'table__body-row_color_error': item.canRemove,
+        'table__body-row_color_warning': item.canCheck,
+      }
+    ]
+  }
+
+  const getButtonClass = (item) => {
+    return {
+      'button_transparent': !item.canEdit && !item.canRemove && !item.canCheck,
+      'button_color_secondary': item.canEdit,
     }
   }
-}
+ </script>
+<style lang="scss" scoped>
+  @import "@/assets/sass/_variables.scss";
+  .form {
+    padding: $gap_m;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    //flex-direction: column;
+    & > * {
+      margin-right: $gap_m;
+    }
+    &__checkbox {
+      display: flex;
+      flex-direction: column;
+      & > label {
+        margin-bottom: 10px;
+      }
+    }
+  }
 </style>
 
