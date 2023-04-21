@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from '@/10-hw-style-class-binding-notify/App.vue'
+import App from '@/11-computed/App.vue'
 
 import '@/assets/sass/app.scss'
 

@@ -71,6 +71,7 @@
       </div>
     </div>
     <button
+
         @click="addNotify(model)"
         class="button" >Add notify</button>
     <br>
