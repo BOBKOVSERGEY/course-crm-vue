@@ -94,6 +94,7 @@
 <script setup>
 
 import Button from "@/12-hw-custom-components/components/Buttons/Button.vue";
+import Footer from "@/12-hw-custom-components/components/Sections/Footer.vue";
 import RightBar from "@/12-hw-custom-components/components/Sections/RightBar.vue";
 import TableRow from "@/12-hw-custom-components/components/Table/TableRow.vue";
 import LeftBar from "@/12-hw-custom-components/components/Sections/LeftBar.vue";
