@@ -14,19 +14,10 @@
           </label>
         </div>
       </div>
+      <TextBox />
+      <TextBox />
       <div class="entity-fields__group">
 
-        <div class="textbox">
-          <label class="textbox__wrapper">
-            <div class="textbox__label">Фамилия
-            </div>
-            <input class="textbox__input"
-                   type="text"
-                   placeholder="Фамилия"
-
-            >
-          </label>
-        </div>
         <div class="radio-group">
           <div class="radio-group__wrapper">
             <div class="radio-group__title">Пол
@@ -360,5 +351,5 @@
 </template>
 
 <script setup>
-
+import TextBox from "@/12-hw-custom-components/components/Form/TextBox.vue";
 </script>
