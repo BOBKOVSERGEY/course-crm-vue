@@ -92,9 +92,10 @@
   <Footer />
 </template>
 <script setup>
-
-
-
+import Button from "@/12-custom-components/components/Button.vue";
+import Footer from "@/12-custom-components/components/Footer.vue";
+import LeftBar from "@/12-custom-components/components/LeftBar.vue";
+import RightBar from "@/12-custom-components/components/RightBar.vue";
 import TableRow from "@/12-custom-components/components/TableRow.vue";
 </script>
 
