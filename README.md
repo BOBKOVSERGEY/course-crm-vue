@@ -1,3 +1,3 @@
 # CRM
-https://lectoria.pro/catalog/vuejs-3/urok-13-propsy-v-komponentah.html
-12.49
+https://lectoria.pro/catalog/vuejs-3/urok-14-sobytiya-komponentov.html
+6.10
