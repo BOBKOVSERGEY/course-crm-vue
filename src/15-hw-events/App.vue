@@ -21,7 +21,7 @@
     Ваш выбор {{ choice }}
   </div>
 
-  <Checkbox label="Foo" @change="getValue"/>
+  <Checkbox label="Foo" @change="getValue" @edit="getValueEdit" />
   <Checkbox label="Bar" @change="getValue" />
   <Checkbox label="Baz" checked @change="getValue" />
 </template>
@@ -41,5 +41,9 @@ function genderChange(gender) {
 
 function getValue(value) {
   console.log(value);
+}
+function getValueEdit(data)
+{
+  console.log(data);
 }
 </script>

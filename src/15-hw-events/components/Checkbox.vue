@@ -4,6 +4,7 @@
         <input type="checkbox"
                :checked="checked"
                @change="dataChange"
+               @click.prevent="dataEdit"
         >
         <div class="checkbox__input">
           <svg class="icon icon_type_checkbox">
@@ -35,11 +36,25 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['change']);
+const emit = defineEmits(['change', 'edit']);
+const a = {
+  nameA: 'lorem',
+  nameB: 'loremB'
+}
+
+const b = {
+  nameB: 'lorem',
+  nameBB: 'loremB'
+}
+function dataEdit() {
+  emit("edit", ...getABValues());
+}
 
 function dataChange(event) {
   emit("change", event.target.checked ? props.trueValue : props.falseValue);
 }
 //collapsed.value = !collapsed.value
-
+function getABValues() {
+  return [1]
+}
 </script>
