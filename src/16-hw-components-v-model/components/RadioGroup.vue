@@ -9,7 +9,7 @@
                      v-for="item in values"
                 >
                     <Radio :name="name"
-                           v-model:value="value"
+                           v-model="value"
                            :value="item.value"
                            :text="item.text"
                            :checked="item.value===value"

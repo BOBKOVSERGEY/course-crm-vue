@@ -7,7 +7,7 @@
           label="Some input"
           placeholder="Some input"  />
 
-    <Radio
+   <!-- <Radio
           v-model="genderValue"
            value="М"
            text="M"
@@ -21,8 +21,8 @@
         v-model="genderValue"
         value=""
         text="Неопределен"
-    />
-  <!--<RadioGroup
+    />-->
+  <RadioGroup
       name="gender"
       v-model="genderValue"
       :values="[
@@ -38,7 +38,7 @@
                           value: '',
                           text: 'Не определился',
                     }]"
-  />-->
+  />
   </div>
 </template>
 
