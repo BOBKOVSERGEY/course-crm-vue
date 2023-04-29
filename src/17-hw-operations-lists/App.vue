@@ -90,9 +90,10 @@ const originalContractors = [
     kpp: '971501001',
   }
 ];
-const contractors = ref(originalContractors);
+const contractors = ref(JSON.parse(JSON.stringify(originalContractors)));
 faker.setLocale('ru');
 const addContractor = (index) => {
+  searchQuery.value = '';
   const newConstractor =  {
     id: +faker.random.numeric(3),
     name: faker.company.name(),
@@ -100,6 +101,7 @@ const addContractor = (index) => {
     kpp:faker.random.numeric(9)
   }
   contractors.value.splice(index, 0, newConstractor)
+  originalContractors.splice(index, 0, newConstractor)
 }
 
 
@@ -111,9 +113,10 @@ const search = () => {
               company.kpp.includes(searchQuery.value.trim())
 
     })
+  }else{
+    contractors.value = JSON.parse(JSON.stringify(originalContractors))
   }
 }
-
 
 
 </script>
