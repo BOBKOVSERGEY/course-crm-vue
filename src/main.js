@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from '@/17-hw-operations-lists/App.vue'
+import App from '@/18-hw-slots/App.vue'
 
 import '@/assets/sass/app.scss'
 
