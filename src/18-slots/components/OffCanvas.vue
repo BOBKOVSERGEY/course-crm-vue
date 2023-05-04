@@ -219,6 +219,8 @@
             </div>
           </slot>
 
+          <slot name="new"></slot>
+
           <slot name="additional">
             <div class="entity-fields__expandable-wrapper">
             <div class="entity-fields__expander"><span>Дополнительная информация</span><a class="button button_size_xs button_transparent button_no-text" href="#">

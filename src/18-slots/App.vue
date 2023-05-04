@@ -527,9 +527,10 @@
             @close="toggleModal"
             :active="modalActive"
         >
-          <!--<template #default></template>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet animi assumenda consectetur culpa distinctio dolorum error fugit, ipsum iste laborum magni maiores nam nesciunt nulla officiis porro quibusdam reiciendis similique!
           <template v-slot:additional>nn</template>
-          <template #footer>nn</template>-->
+          <template v-slot:new>new</template>
+          <template #footer>nn</template>
         </OffCanvas>
         <div class="modal">
           <div class="modal__main">
