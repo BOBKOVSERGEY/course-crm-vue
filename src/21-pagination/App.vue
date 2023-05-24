@@ -1,67 +1,66 @@
 <template>
-  <div class="app">
     <div class="app__wrapper app__wrapper_page-type_inner">
-      <LeftBar />
-      <div class="app__main">
-        <div class="main-content">
-          <MainContentHead />
-          <div class="main-content__body">
-            <Search />
-            <ContractsList
-                @change-sort="sortUsers"
-                :sort-dir="sortDir"
-                :sort-key="sortKey"
-                :contractList="contractList"
-            />
-          </div>
+        <LeftBar/>
+        <div class="app__main">
+            <div class="main-content">
+                <div class="main-content__head">
+                    <div class="main-content__head-row">
+                        <div class="main-content__title">Контактные лица и сотрудники
+                        </div>
+                        <div class="page-controls">
+                            <Button size="s" icon="plus-circle" text="Получить данные"
+
+                            />
+                        </div>
+                    </div>
+                </div>
+                <div class="main-content__body">
+                    <div class="search">
+                        <TextBox placeholder="Телефон, имя..."
+                                 v-model="searchText"
+
+                        />
+                        <Button icon="search" text="Искать"
+
+                        />
+                    </div>
+                    <UsersList
+                    :username="searchText"
+                    />
+                </div>
+            </div>
+            <Modal
+                :active="modalActive"
+                @close="toggleModal"
+            >
+                <template #default>содержимое</template>
+                <template #additional>Внедряемое содержимое</template>
+                <template #footer> test</template>
+            </Modal>
         </div>
-        <ModalAside />
-      </div>
     </div>
-    <Footer />
-  </div>
+    <Footer/>
 </template>
 
 <script setup>
+import LeftBar from "@/21-pagination/components/LeftBar.vue"
+import Footer from "@/21-pagination/components/Footer.vue"
+import UsersList from "@/21-pagination/components/UsersList.vue";
+import TextBox from "@/21-pagination/components/TextBox.vue";
+import Modal from "@/21-pagination/components/Modal.vue";
 
-import Footer from "@/20-hw-sorting/components/Footer.vue";
-import LeftBar from "@/20-hw-sorting/components/LeftBar.vue";
-import ModalAside from "@/20-hw-sorting/components/ModalAside.vue";
-import MainContentHead from "@/20-hw-sorting/components/MainContentHead.vue";
-import Search from "@/20-hw-sorting/components/Search.vue";
-import ContractsList from "@/20-hw-sorting/components/table/ContractsList.vue";
-import {onMounted, ref} from "vue";
+import { ref, onMounted } from "vue";
+import Button from "@/21-pagination/components/Button.vue";
 
-const contractList = ref([]);
-const loading = ref(false);
-const errors = ref([]);
 
-const getContractList = async () => {
-  loading.value = true;
-  await fetch(`https://jsonplaceholder.typicode.com/users`)
-      .then( (response) => response.json())
-      .then((res) => {
-        contractList.value = res;
-      })
-      .catch((error) => errors.value = error)
-      .finally( () => loading.value = false)
+
+
+const searchText = ref('');
+const modalActive = ref(false);
+
+function toggleModal() {
+    modalActive.value = !modalActive.value;
 }
 
-onMounted(() => {
-  getContractList();
-})
 
-const sortDir = ref('');
-const sortKey = ref('');
-function sortUsers(key, dir){
-  sortDir.value = dir;
-  sortKey.value = key;
-  if(!dir){
-    getContractList();
-    return;
-  }
-  contractList.value.sort((user1, user2) => {
-    return dir === 'asc' ? user1[key].localeCompare(user2[key]) : -(user1[key].localeCompare(user2[key]));
-  });
-}
 </script>

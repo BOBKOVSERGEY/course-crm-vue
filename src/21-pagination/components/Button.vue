@@ -14,7 +14,7 @@
     </a>
 </template>
 <script setup>
-import Icon from "@/20-sorting/components/Icon.vue";
+import Icon from "@/21-pagination/components/Icon.vue";
 
 const props = defineProps({
     color: String,
