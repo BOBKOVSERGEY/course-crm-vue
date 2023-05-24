@@ -3,19 +3,13 @@
     <table class="table">
       <thead class="table__head">
       <tr class="table__head-row">
-        <TableHeadCell text="№"/>
-        <TableHeadCell text="Заказчик"
-                       @change-sort="(sortDir) => handleSort('name', sortDir)"
-                       :sort-dir="sortKey === 'name' && sortDir ? sortDir : ''"
+        <TableHeadCell text="Name"/>
+        <TableHeadCell text="Email"
+                       @change-sort="(sortDir) => handleSort('email', sortDir)"
+                       :sort-dir="sortKey === 'email' && sortDir ? sortDir : ''"
         />
         <th class="table__head-cell">
-          Исполнитель
-        </th>
-        <th class="table__head-cell">
-          Подписан
-        </th>
-        <th class="table__head-cell">
-          Сделки
+          Body
         </th>
         <th class="table__head-cell table__head-cell_actions"><a class="button button_no-text button_size_xs button_transparent" href="#">
           <svg class="icon icon_type_cog">
@@ -29,26 +23,20 @@
       </thead>
       <tbody class="table__body">
         <tr
-            v-if="contractList.length"
-            v-for="item in contractList"
-            :key="item.id"
+            v-if="comments.length"
+            v-for="comment in comments"
+            :key="comment.id"
             class="table__body-row">
           <td class="table__body-cell">
-            {{item.phone}}
+            {{comment.name}}
           </td>
           <td class="table__body-cell">
             <a href="#">
-            {{ item.name }}
+              {{comment.email}}
             </a>
           </td>
           <td class="table__body-cell">
-            <a href="#">
-              {{ item.company.name }}
-            </a>
-          </td>
-          <td class="table__body-cell">Нет
-          </td>
-          <td class="table__body-cell">25
+              {{comment.body.slice(0, 10)}}
           </td>
           <td class="table__body-cell table__body-cell_actions"><a class="button button_size_xs button_rounded button_no-text button_transparent" href="#">
             <svg class="icon icon_type_pencil">
@@ -61,29 +49,62 @@
         </tr>
       </tbody>
     </table>
-    <Pagination />
+    <Pagination
+        v-model="currentPage"
+    />
   </div>
 </template>
 
 <script setup>
-import Pagination from "@/20-hw-sorting/components/Pagination.vue";
-import TableHeadCell from "@/20-hw-sorting/components/table/TableHeadCell.vue";
+import Pagination from "@/21-hw-pagination/components/Pagination.vue";
+import TableHeadCell from "@/21-hw-pagination/components/table/TableHeadCell.vue";
+import {onMounted, ref, watchEffect} from "vue";
 
-const props = defineProps({
-  contractList: {
-    type: Array,
-    required: true
-  },
-  sortDir: {
-    type: String,
-    default: ''
-  },
-  sortKey: String,
-});
+const currentPage = ref(1);
 
-const emit = defineEmits(['change-sort']);
+
+
 function handleSort(key, sortDir){
-  console.log(sortDir)
-  emit('change-sort', key, sortDir);
+  console.log(key, sortDir)
+  sortUsers(key, sortDir)
+}
+
+
+const comments = ref([]);
+const loading = ref(false);
+const errors = ref([]);
+
+const getComments = async () => {
+  loading.value = true;
+  let url = `https://jsonplaceholder.typicode.com/comments?&_limit=10`;
+  if(currentPage.value > 1) {
+    url += `&_page=${ currentPage.value }`;
+  }
+  await fetch(url)
+      .then( (response) => response.json())
+      .then((res) => {
+        comments.value = res;
+      })
+      .catch((error) => errors.value = error)
+      .finally( () => loading.value = false)
+}
+
+
+watchEffect(() => {
+  getComments();
+})
+
+const sortDir = ref('');
+const sortKey = ref('');
+function sortUsers(key, dir){
+  sortDir.value = dir;
+  sortKey.value = key;
+  if(!dir){
+    getComments();
+    return;
+  }
+  comments.value.sort((user1, user2) => {
+    return dir === 'asc' ? user1[key].localeCompare(user2[key]) : -(user1[key].localeCompare(user2[key]));
+  });
 }
 </script>
