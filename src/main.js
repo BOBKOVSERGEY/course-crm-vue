@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import App from '@/22-infinity-scroll/App.vue'
+import App from '@/22-hw-infinity-scroll/App.vue'
 
 import '@/assets/sass/app.scss'
 
