@@ -15,7 +15,7 @@
             />
           </div>
         </div>
-
+     
       </div>
     </div>
     <Footer />
@@ -24,12 +24,11 @@
 
 <script setup>
 
-import Footer from "@/20-hw-sorting/components/Footer.vue";
-import LeftBar from "@/20-hw-sorting/components/LeftBar.vue";
-import ModalAside from "@/20-hw-sorting/components/ModalAside.vue";
-import MainContentHead from "@/20-hw-sorting/components/MainContentHead.vue";
-import Search from "@/20-hw-sorting/components/Search.vue";
-import ContractsList from "@/20-hw-sorting/components/table/ContractsList.vue";
+import Footer from "@/24-hw-transition/components/Footer.vue";
+import LeftBar from "@/24-hw-transition/components/LeftBar.vue";
+import MainContentHead from "@/24-hw-transition/components/MainContentHead.vue";
+import Search from "@/24-hw-transition/components/Search.vue";
+import ContractsList from "@/24-hw-transition/components/table/ContractsList.vue";
 import {onMounted, ref} from "vue";
 
 const contractList = ref([]);
