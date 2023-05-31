@@ -1,0 +1,145 @@
+.fade-enter-from {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fade-enter-to {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.fade-enter-active {
+  transition: opacity $animation_speed_m $animation_type;
+}
+
+.fade-leave-from {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.fade-leave-to {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fade-leave-active {
+  visibility: visible;
+  transition: opacity $animation_speed_m $animation_type;
+}
+
+
+.slide2-enter-from {
+  transform: translateX(100%);
+}
+
+.slide2-enter-to {
+  transform: translateX(0);
+}
+
+.slide2-enter-active {
+  transition: transform $animation_speed_m $animation_speed_m $animation_type;
+}
+
+.slide2-leave-from {
+  transform: translateX(0);
+}
+
+.slide2-leave-to {
+  transform: translateX(100%);
+}
+
+.slide2-leave-active {
+  transition: transform $animation_speed_m $animation_speed_m $animation_type;
+}
+
+
+.slide-enter-from {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+
+  .inner {
+    transform: translateX(100%);
+  }
+}
+
+.slide-enter-to {
+  visibility: visible;
+  opacity: 1;
+  .inner {
+    transform: translateX(0);
+  }
+  pointer-events: all;
+}
+
+.slide-enter-active {
+  transition: opacity $animation_speed_m $animation_type;
+  .inner {
+    transition: transform $animation_speed_m $animation_speed_m $animation_type,
+  }
+}
+
+.slide-leave-from {
+  visibility: visible;
+  opacity: 1;
+  .inner {
+    transform: translateX(0);
+  }
+  pointer-events: all;
+}
+
+.slide-leave-to {
+  visibility: hidden;
+  opacity: 0;
+  .inner {
+    transform: translateX(100%);
+  }
+  pointer-events: none;
+}
+
+.slide-leave-active {
+  visibility: visible;
+  transition: opacity $animation_speed_m $animation_speed_m $animation_type;
+  .inner {
+    transition: transform $animation_speed_m $animation_type,
+  }
+}
+
+
+/*base*/
+.v-enter-from {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.v-enter-to {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.v-enter-active {
+  transition: opacity $animation_speed_m $animation_type;
+}
+
+.v-leave-from {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.v-leave-to {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.v-leave-active {
+  visibility: visible;
+  transition: opacity $animation_speed_m $animation_type;
+}
